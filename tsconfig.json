@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    // Directorios
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // Entorno
+    "module": "nodenext",
+    "target": "esnext",
+    "lib": ["esnext"],
+    "types": ["node"],
+
+    // Salida
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Verificación básica (menos restrictiva para empezar)
+    "strict": true,
+    
+    // Compatibilidad
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true
+  },
+  
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
