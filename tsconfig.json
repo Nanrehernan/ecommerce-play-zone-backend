@@ -1,31 +1,18 @@
 {
   "compilerOptions": {
-    // Directorios
     "rootDir": "./src",
     "outDir": "./dist",
-
-    // Entorno
-    "module": "nodenext",
-    "target": "esnext",
-    "lib": ["esnext"],
+    "module": "commonjs",  // Más simple que nodenext
+    "target": "es2020",    // Más compatible
+    "lib": ["es2020"],
     "types": ["node"],
-
-    // Salida
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-
-    // Verificación básica (menos restrictiva para empezar)
-    "strict": true,
     
-    // Compatibilidad
+    "sourceMap": true,
+    "strict": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true
   },
   
   "include": ["src/**/*"],
