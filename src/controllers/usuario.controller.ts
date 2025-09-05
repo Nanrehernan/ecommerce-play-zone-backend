@@ -20,9 +20,9 @@ export const getUsuario = async (request: Request, response: Response) => {
 
 export const getUsuarioById = async (request: Request, response: Response) => {
    try {
-      const { _id } = request.params
+      const { id } = request.params
 
-      const usuario = await UsuarioModel.findById(_id)
+      const usuario = await UsuarioModel.findById({ _id: id })
 
       if (!usuario) {
          return response.status(404).json({
@@ -44,7 +44,7 @@ export const getUsuarioById = async (request: Request, response: Response) => {
 
 export const addUsuario = async (request: Request, response: Response) => {
    try {
-      const {password, ...data} = request.body
+      const { password, ...data } = request.body
 
       const usuario = new UsuarioModel({
          ...data,
@@ -72,8 +72,8 @@ export const addUsuario = async (request: Request, response: Response) => {
 
 export const deleteUsuario = async (request: Request, response: Response) => {
    try {
-      const { _id } = request.params
-      const usuario = await UsuarioModel.findByIdAndDelete(_id)
+      const { id } = request.params
+      const usuario = await UsuarioModel.findByIdAndDelete({ _id: id })
 
       if (!usuario) {
          return response.status(404).json({
@@ -94,14 +94,15 @@ export const deleteUsuario = async (request: Request, response: Response) => {
 
 export const updateUsuario = async (request: Request, response: Response) => {
    try {
-      const { _id, password, ...data } = request.body
+      const { id } = request.params
+      const { password, ...data } = request.body
 
       const updateUsuario = {
          ...data,
          password: await passworHash(password)
       }
 
-      const usuario = await UsuarioModel.findByIdAndUpdate(_id, updateUsuario, { new: true, runValidators: true })
+      const usuario = await UsuarioModel.findByIdAndUpdate({_id: id}, updateUsuario, { new: true, runValidators: true })
 
       if (!usuario) {
          return response.status(404).json({

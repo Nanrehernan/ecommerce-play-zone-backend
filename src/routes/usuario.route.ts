@@ -7,10 +7,10 @@ export const routerUsuario = Router()
 
 routerUsuario.get("/", getUsuario)
 
-routerUsuario.get("/:_id", isObjectId, getUsuarioById)
+routerUsuario.get("/:id", isObjectId, getUsuarioById)
 
 routerUsuario.post("/", userValidation, addUsuario)
 
-routerUsuario.delete("/:_id", isObjectId, deleteUsuario)
+routerUsuario.delete("/:id", isObjectId, deleteUsuario)
 
-routerUsuario.put("/", isObjectId, userValidation, updateUsuario)
+routerUsuario.put("/:id", isObjectId, userValidation, updateUsuario)

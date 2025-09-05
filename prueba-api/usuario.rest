@@ -2,15 +2,15 @@
 GET http://localhost:4000/usuario
 
 ### Obtener un Usuario por Id
-GET http://localhost:4000/usuario/68b59fbbff3ed16680008a81
+GET http://localhost:4000/usuario/68b7a3e651f1c6bb49040866
 
 ### Agregar un Usuario
 POST http://localhost:4000/usuario
 Content-Type: application/json
 
 {
-   "nombre": "Teodoro Cabrera",
-   "email": "teodoro@gmail.com",
+   "nombre": "Juzta Guzmán",
+   "email": "justa@gmail.com",
    "password": "12345678"
 }
 
@@ -18,11 +18,10 @@ Content-Type: application/json
 DELETE http://localhost:4000/usuario/68b59ec2bf7499cb03a613b5
 
 ### Agregar un Usuario
-PUT http://localhost:4000/usuario
+PUT http://localhost:4000/usuario/68b59fbbff3ed16680008a81
 Content-Type: application/json
 
 {
-   "_id": "68b59fbbff3ed16680008a81",
    "nombre": "Camila Portillo",
    "email": "camila@gmail.com",
    "password": "12345678"
