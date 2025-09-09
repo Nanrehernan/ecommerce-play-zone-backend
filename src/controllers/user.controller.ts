@@ -1,10 +1,11 @@
 import { Request, Response } from "express"
-import { UsuarioModel } from "../models/usuario.model"
+import { UserModel } from "../models/usuario.model"
 import { passworHash } from "../helpers/bcryptHash"
+import { Error as MongooseError } from "mongoose"
 
 export const getUsuario = async (request: Request, response: Response) => {
    try {
-      const usuarios = await UsuarioModel.find()
+      const usuarios = await UserModel.find()
 
       response.json({
          message: "Exito",
@@ -22,11 +23,11 @@ export const getUsuarioById = async (request: Request, response: Response) => {
    try {
       const { id } = request.params
 
-      const usuario = await UsuarioModel.findById({ _id: id })
+      const usuario = await UserModel.findById({ _id: id })
 
       if (!usuario) {
          return response.status(404).json({
-            message: "Usuario no encontrado"
+            message: "Error. Usuario no encontrado, compruebe los datos"
          })
       }
 
@@ -46,7 +47,7 @@ export const addUsuario = async (request: Request, response: Response) => {
    try {
       const { password, ...data } = request.body
 
-      const usuario = new UsuarioModel({
+      const usuario = new UserModel({
          ...data,
          password: await passworHash(password)
       })
@@ -63,9 +64,16 @@ export const addUsuario = async (request: Request, response: Response) => {
          data: usuario
       })
    } catch (error) {
+      if (error instanceof MongooseError.ValidationError) {
+         return response.status(404).json({
+            message: error.message,
+            error: error.name
+         })
+      }
+
       response.status(500).json({
          message: "Error inesperado",
-         Error: error
+         error
       })
    }
 }
@@ -73,7 +81,7 @@ export const addUsuario = async (request: Request, response: Response) => {
 export const deleteUsuario = async (request: Request, response: Response) => {
    try {
       const { id } = request.params
-      const usuario = await UsuarioModel.findByIdAndDelete({ _id: id })
+      const usuario = await UserModel.findByIdAndDelete({ _id: id })
 
       if (!usuario) {
          return response.status(404).json({
@@ -102,7 +110,7 @@ export const updateUsuario = async (request: Request, response: Response) => {
          password: await passworHash(password)
       }
 
-      const usuario = await UsuarioModel.findByIdAndUpdate({_id: id}, updateUsuario, { new: true, runValidators: true })
+      const usuario = await UserModel.findById({_id: id})
 
       if (!usuario) {
          return response.status(404).json({
@@ -110,14 +118,24 @@ export const updateUsuario = async (request: Request, response: Response) => {
          })
       }
 
+      Object.assign(usuario, updateUsuario)
+      await usuario.save()
+
       response.json({
          message: `Exito. Los datos del usuario ${usuario.nombre}, fue actualizado`,
          data: usuario
       })
    } catch (error) {
+      if (error instanceof MongooseError.ValidationError) {
+         return response.status(404).json({
+            message: error.message,
+            error: error.name
+         })
+      }
+
       response.status(500).json({
          message: "Error inesperado",
-         Error: error
+         error
       })
    }
 }

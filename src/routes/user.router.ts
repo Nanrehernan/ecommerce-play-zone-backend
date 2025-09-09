@@ -1,5 +1,5 @@
 import {Router} from "express"
-import { getUsuario, getUsuarioById, addUsuario, deleteUsuario, updateUsuario } from "../controllers/usuario.controller"
+import { getUsuario, getUsuarioById, addUsuario, deleteUsuario, updateUsuario } from "../controllers/user.controller"
 import { isObjectId } from "../middlewares/isObjectId"
 import { userValidation } from "../middlewares/userValidator"
 

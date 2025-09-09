@@ -6,7 +6,7 @@ export const isObjectId = (request: Request, response: Response, next: NextFunct
 
    if (!Types.ObjectId.isValid(id)) {
       return response.status(404).json({
-         message: `El parametro id: ${id}, no tiene el formato esperado`
+         message: `Error. El parametro id: ${id}, no tiene el formato esperado`
       })
    }
 

@@ -1,0 +1,35 @@
+############################################################# Obtener todos los productos
+GET http://localhost:4000/product
+
+############################################################# Obtener todos los productos por categoria
+GET http://localhost:4000/product?category=carrera
+
+############################################################# Obtener un producto por Id
+GET http://localhost:4000/product/68bbb548973250c3c3948718
+
+############################################################# Agregar un Producto
+POST http://localhost:4000/product
+Content-Type: application/json
+
+{
+   "image": "https://m.media-amazon.com/images/I81htlTqEckL._SL1500_.jpg",
+   "title": "Need For Speed Most Wanted",
+   "description": "Plataforma PS5",
+   "price": 5000,
+   "category": "carrera"
+}
+
+############################################################# Eliminar un producto por Id
+DELETE http://localhost:4000/product/6885fd723ac5f0
+
+############################################################# Modificar un producto por Id
+PUT http://localhost:4000/product/68c0a0fb5a46d1be75595b3d
+Content-Type: application/json
+
+{
+   "title": "Forza New Horizont",
+   "image": "https://m.media-amazon.com/images/I81htlTqEckL_SL1500_.jpg",
+   "description": "Plataforma PC | PS5",
+   "price": 20000,
+   "category": "carrera"
+}
