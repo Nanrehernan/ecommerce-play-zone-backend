@@ -104,7 +104,7 @@ export const modifyQuantity = async (request: Request, response: Response) => {
       }
 
       const cantidad = product.quantity + quantity
-      const port = process.env.PORT
+      const port = process.env.PORT || 4000
 
       if (cantidad < 1) {
          const resp = await fetch(`http://localhost:${port}/cart/${id}?idUsuario=${idUsuario}`, {
