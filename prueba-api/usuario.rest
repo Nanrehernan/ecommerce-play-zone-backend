@@ -9,10 +9,9 @@ POST http://localhost:4000/user
 Content-Type: application/json
 
 {
-   "nombre": "Juzta Guzmán",
-   "email": "juzta@gmail.com",
-   "password": "12345678",
-   "username": "@juzta"
+   "nombre": "Hernan Garcete",
+   "email": "hernangarcete@live.com",
+   "password": "12345678"
 }
 
 ################################################################# Eliminar un Usuario por Id

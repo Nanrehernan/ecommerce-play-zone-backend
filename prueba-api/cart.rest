@@ -1,16 +1,27 @@
 ############################################################# Obtener todos los item del carrito por usuario
-GET http://localhost:4000/cart?idUsuario=6885fcf127faec149a1910bc
+GET http://localhost:4000/cart?idUsuario=68c162b662e714a4fb763fc7
 
-############################################################# Agregar Item al carrito
-POST http://localhost:4000/cart?idUsuario=6885fcf127faec149a1910bc
+############################################################# Agregar Item al carrito, category -> [carta, figura, video-juego]
+POST http://localhost:4000/cart?idUsuario=68c162b662e714a4fb763fc7
 Content-Type: application/json
 
 {
-   "_id": "68c0b49f16e57d5a50a1a11b",
-   "image": "https://m.media-amazon.com/images/I81htlTqEckL._SL1500_.jpg",
-   "title": "Need For Speed Most Wanted",
-   "description": "Plataforma PS5",
-   "price": 5000,
-   "category": "carrera",
-   "quantity": 1
+      "idProduct": "68c1631862e714a4fb763fca",
+      "title": "Pokémon",
+      "description": "Box de Cartas",
+      "image": "https://www.kroger.com/product/images/large/front/0082065081344",
+      "price": 50000,
+      "category": "carta",
+      "quantity": 1
+    }
+
+############################################################# Eliminar item del carrito por Id
+DELETE http://localhost:4000/cart/68c169fae00b855e4011bccc?idUsuario=68c1627d62e714a4fb763fc3
+
+############################################################# Modificar Cantidad de un item del carrito, la cantidad puede ser negativo en caso de querer descontar
+PATCH http://localhost:4000/cart/68c16a1fe00b855e4011bcd1?idUsuario=68c162b662e714a4fb763fc7
+Content-Type: application/json
+
+{
+   "quantity": -1
 }

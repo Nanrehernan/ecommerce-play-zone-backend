@@ -10,7 +10,7 @@ export interface Usuario extends Document {
 const usuarioShema = new Schema<Usuario>(
    {
       nombre: { type: String, required: true },
-      email: { type: String, required: true },
+      email: { type: String, required: true, unique: true },
       password: { type: String, required: true }
 
    },

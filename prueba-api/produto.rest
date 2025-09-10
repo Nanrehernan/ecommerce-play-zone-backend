@@ -1,26 +1,26 @@
 ############################################################# Obtener todos los productos
 GET http://localhost:4000/product
 
-############################################################# Obtener todos los productos por categoria
-GET http://localhost:4000/product?category=carrera
+############################################################# Obtener todos los productos por categoria [carta, figura, video-juego]
+GET http://localhost:4000/product?category=video-juego
 
 ############################################################# Obtener un producto por Id
-GET http://localhost:4000/product/68bbb548973250c3c3948718
+GET http://localhost:4000/product/68c163a662e714a4fb763fd5
 
 ############################################################# Agregar un Producto
 POST http://localhost:4000/product
 Content-Type: application/json
 
 {
-   "image": "https://m.media-amazon.com/images/I81htlTqEckL._SL1500_.jpg",
-   "title": "Need For Speed Most Wanted",
-   "description": "Plataforma PS5",
-   "price": 5000,
-   "category": "carrera"
+   "image": "https://p1.akcdn.net/full/1191447598.electronic-arts-ufc-5-xbox-series-x-s.jpg",
+   "title": "UFC 5",
+   "description": "Plataforma Xbox Serie X",
+   "price": 60000,
+   "category": "video-juego"
 }
 
 ############################################################# Eliminar un producto por Id
-DELETE http://localhost:4000/product/6885fd723ac5f0
+DELETE http://localhost:4000/product/68c163a662e714a4fb763fd5
 
 ############################################################# Modificar un producto por Id
 PUT http://localhost:4000/product/68c0a0fb5a46d1be75595b3d
