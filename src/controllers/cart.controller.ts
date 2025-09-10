@@ -106,8 +106,8 @@ export const modifyQuantity = async (request: Request, response: Response) => {
       const cantidad = product.quantity + quantity
       const port = process.env.PORT
 
-      if (cantidad < 0) {
-         const resp = await fetch(`http://localhost:${port}/cart/${id}?${new URLSearchParams(String(idUsuario))}`, {
+      if (cantidad < 1) {
+         const resp = await fetch(`http://localhost:${port}/cart/${id}?idUsuario=${idUsuario}`, {
             method: "DELETE"
          })
 
